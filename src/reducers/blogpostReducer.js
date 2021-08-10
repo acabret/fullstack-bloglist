@@ -1,6 +1,7 @@
 import blogService from "../services/blogs";
 
-const blogReducer = (state = [], action) => {
+const blogReducer = (state = null, action) => {
+  console.log("tipo de action:", action.type);
   switch (action.type) {
     case "blog/init":
       return [...action.data];
@@ -9,8 +10,6 @@ const blogReducer = (state = [], action) => {
       return state.concat(action.data);
 
     case "blog/delete":
-      // console.log();
-      console.log(action.data);
       return state.filter((blog) => blog !== action.data);
 
     case "blog/pluslike":
